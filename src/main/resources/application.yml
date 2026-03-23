@@ -4,9 +4,9 @@ spring:
   
   # Database Configuration
   datasource:
-    url: jdbc:postgresql://localhost:5432/shortener_db
-    username: shortener
-    password: password
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://${RENDER_DB_HOST:localhost}:${RENDER_DB_PORT:5432}/${RENDER_DB_NAME:shortener_db}}
+    username: ${SPRING_DATASOURCE_USERNAME:shortener}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
     driver-class-name: org.postgresql.Driver
     
   # JPA / Hibernate Configuration
@@ -22,9 +22,9 @@ spring:
   # Redis Configuration
   data:
     redis:
-      host: localhost
-      port: 6379
-      password: redis_password
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+      password: ${SPRING_DATA_REDIS_PASSWORD:redis_password}
 
 server:
   port: 8080

@@ -7,10 +7,18 @@ services:
     envVars:
       - key: PORT
         value: 8080
-      - key: SPRING_DATASOURCE_URL
+      - key: RENDER_DB_HOST
         fromDatabase:
           name: shortener-db
-          property: connectionString
+          property: host
+      - key: RENDER_DB_PORT
+        fromDatabase:
+          name: shortener-db
+          property: port
+      - key: RENDER_DB_NAME
+        fromDatabase:
+          name: shortener-db
+          property: database
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: shortener-db

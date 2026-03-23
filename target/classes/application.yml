@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: url-shortener
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shortener_db
+    username: shortener
+    password: password
+    driver-class-name: org.postgresql.Driver
+    
+  # JPA / Hibernate Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Redis Configuration
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: redis_password
+
+server:
+  port: 8080
+
+app:
+  shortener:
+    domain: http://localhost:8080/

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snip | Premium URL Shortener</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <main class="container">
+        <header class="hero">
+            <h1>Snip<span>.</span></h1>
+            <p>Enterprise-grade URL minimization.</p>
+        </header>
+
+        <section class="glass-panel main-panel">
+            <form id="shorten-form">
+                <div class="input-group">
+                    <input type="url" id="originalUrl" placeholder="Paste your long URL here..." required autocomplete="off">
+                    <button type="submit" id="submit-btn">Shorten</button>
+                </div>
+                
+                <div class="advanced-toggle" id="advanced-toggle">
+                    <span>+ Advanced Options (Alias, Expiration)</span>
+                </div>
+
+                <div class="advanced-options" id="advanced-options" style="display: none;">
+                    <div class="input-group-sm">
+                        <label for="customAlias">Custom Alias</label>
+                        <input type="text" id="customAlias" placeholder="e.g. my-campaign" pattern="[a-zA-Z0-9]+" title="Alphanumeric characters only">
+                    </div>
+                    <div class="input-group-sm">
+                        <label for="expiry">Expiration Date (Optional)</label>
+                        <input type="datetime-local" id="expiry">
+                    </div>
+                </div>
+            </form>
+
+            <div class="result-box" id="result-box" style="display: none;">
+                <p>Your short URL is ready:</p>
+                <div class="short-url-row">
+                    <a href="#" id="shortUrlDisplay" target="_blank"></a>
+                    <button id="copy-btn">Copy</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel analytics-panel">
+            <h2>Track Analytics</h2>
+            <form id="analytics-form">
+                <div class="input-group">
+                    <input type="text" id="analyticsCode" placeholder="Enter short code to track..." required autocomplete="off">
+                    <button type="submit">Track</button>
+                </div>
+            </form>
+            <div id="analytics-result" style="display: none;">
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <span class="stat-value" id="stat-clicks">0</span>
+                        <span class="stat-label">Total Clicks</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value text-sm" id="stat-created">-</span>
+                        <span class="stat-label">Created At</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

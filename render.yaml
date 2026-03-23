@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: url-shortener
+    env: docker
+    region: oregon
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: shortener-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: shortener-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: shortener-db
+          property: password
+      - key: SPRING_DATA_REDIS_HOST
+        fromService:
+          type: redis
+          name: shortener-redis
+          property: host
+      - key: SPRING_DATA_REDIS_PORT
+        fromService:
+          type: redis
+          name: shortener-redis
+          property: port
+      - key: APP_SHORTENER_DOMAIN
+        # Default placeholder, Render automatically assigns a random prefix, the user can change it later.
+        value: "https://url-shortener.onrender.com/"
+
+databases:
+  - name: shortener-db
+    databaseName: shortener_db
+    user: shortener
+    plan: free
+    region: oregon
+
+redis:
+  - name: shortener-redis
+    ipAllowList: [] # blank allows all internal connections, blocks external
+    plan: free
+    region: oregon
